@@ -28,11 +28,11 @@
 
 Для параметра a = 5:
 
-![Preview 1](https://github.com/kwk18/CG/blob/main/plot1.jpg)
+![Preview 1](https://github.com/kwk18/CG/blob/main/lab1/plot1.jpg)
 
 Для параметра a = 94:
 
-![Preview 2](https://github.com/kwk18/CG/blob/main/plot2.jpg)
+![Preview 2](https://github.com/kwk18/CG/blob/main/lab1/plot2.jpg)
 
 ### Выводы
 Совместное использование Python и matplotlib открывает возможности для быстрого и точного построения графиков в любой системе координат. Это полезный инструмент для визуализации данных, позволяющий строить графики функций, диаграммы, графики разброса (Scutter) и т.д.
