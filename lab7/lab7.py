@@ -21,7 +21,7 @@ def interpol(x, t):                          # interpolation of B-spline by x an
 
 fig = plt.figure()
 ax = fig.add_subplot(211)
-a, = plt.plot(t, x, '-og')                   # plot container with knotes (by lines & dots)
+a, = plt.plot(t, x, '-og')                   # plot container with knots (by lines & dots)
 cords = interpol(x, t)
 l, = plt.plot(cords[0], cords[1], 'r')       # plot array [x,y] for spline
 plt.xlim([min(t), max(t)])
