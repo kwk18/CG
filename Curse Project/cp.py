@@ -9,10 +9,13 @@ def zoom_factory(ax, base_scale=2.):
         # get the current x and y limits
         cur_xlim = ax.get_xlim()
         cur_ylim = ax.get_ylim()
+        cur_zlim = ax.get_zlim()
         cur_xrange = (cur_xlim[1] - cur_xlim[0]) * .5
         cur_yrange = (cur_ylim[1] - cur_ylim[0]) * .5
+        cur_zrange = (cur_zlim[1] - cur_zlim[0]) * .5
         xdata = event.xdata  # get event x location
         ydata = event.ydata  # get event y location
+        zdata = event.xdata  # get event z location
         if event.button == 'up':
             # deal with zoom in
             scale_factor = 1 / base_scale
@@ -24,15 +27,23 @@ def zoom_factory(ax, base_scale=2.):
             scale_factor = 1
             print(event.button)
         # set new limits
-        ax.set_xlim([
-            xdata - cur_xrange * scale_factor,
-            xdata + cur_xrange * scale_factor
-        ])
-        ax.set_ylim([
-            ydata - cur_yrange * scale_factor,
-            ydata + cur_yrange * scale_factor
-        ])
-        plt.draw()  # force re-draw
+        try:
+           ax.set_xlim([
+               xdata - cur_xrange * scale_factor,
+               xdata + cur_xrange * scale_factor
+           ])
+           ax.set_ylim([
+               ydata - cur_yrange * scale_factor,
+               ydata + cur_yrange * scale_factor
+           ])
+           ax.set_zlim([
+               zdata - cur_zrange * scale_factor,
+               zdata + cur_zrange * scale_factor
+           ])
+
+           plt.draw()  # force re-draw
+        except:
+           print('Курсор вне поля')
 
     fig = ax.get_figure()  # get the figure of interest
     # attach the call back
@@ -83,7 +94,7 @@ for i in range(len(ell) - 1):
         ])
 plt.style.use('bmh')
 fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d', facecolor='w' )
+ax = fig.add_subplot(111, projection='3d', facecolor = 'w', )
 ax.grid(True)
 plt.xlabel('x')
 plt.ylabel('y')
